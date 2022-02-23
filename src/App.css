@@ -1,0 +1,15 @@
+.container {
+    display: grid;
+    margin: 0 auto;
+    max-width: 1260px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+}
+
+.container__content {
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+}

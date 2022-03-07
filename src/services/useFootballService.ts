@@ -11,21 +11,27 @@ const useFootballService = () => {
     return await request(`${apiBase}competitions/`, 'GET', headers);
   }, [request, headers]);
 
-  const getLeagueMatches = async (id: string) => {
-    return await request(
-      `${apiBase}competitions/${id}/matches`,
-      'GET',
-      headers,
-    );
-  };
+  const getLeagueMatches = useCallback(
+    async (id: string) => {
+      return await request(
+        `${apiBase}competitions/${id}/matches`,
+        'GET',
+        headers,
+      );
+    },
+    [request, headers],
+  );
 
   const getTeams = useCallback(async () => {
     return await request(`${apiBase}teams/`, 'GET', headers);
   }, [request, headers]);
 
-  const getTeamMatches = async (id: string) => {
-    return await request(`${apiBase}teams/${id}`, 'GET', headers);
-  };
+  const getTeamMatches = useCallback(
+    async (id: string) => {
+      return await request(`${apiBase}teams/${id}`, 'GET', headers);
+    },
+    [request, headers],
+  );
 
   return {
     loading,

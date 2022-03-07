@@ -1,18 +1,15 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useFootballService from '../../services/useFootballService';
 import Spinner from '../../components/shared/spinner/Spinner';
 import ErrorIndicator from '../../components/shared/errorIndicator/ErrorIndicator';
 import SearchPanel from '../../components/searchPanel/SearchPanel';
 import Pagination from '../../components/pagination/Pagination';
 import TeamsGrid from '../../components/teamsGrid/TeamsGrid';
-import { ITeams } from '../../types/teams';
-
-const pageSize = 10;
+import { useSearch } from '../../hooks/useSearch';
+import { useSplitIntoPages } from '../../hooks/useSplitIntoPages';
 
 const Teams = () => {
   const [teams, setTeams] = useState([]);
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [term, setTerm] = useState<string>('');
   const { loading, error, getTeams } = useFootballService();
 
   useEffect(() => {
@@ -21,29 +18,9 @@ const Teams = () => {
     });
   }, [getTeams]);
 
-  const onChangeSearch = (term: string): void => {
-    setTerm(term);
-  };
-
-  const searchLeagues = (items: ITeams[], term: string): ITeams[] => {
-    if (term.length === 0) {
-      return items;
-    }
-
-    return items.filter(({ name }) => {
-      return name.toLocaleLowerCase().indexOf(term.toLocaleLowerCase()) > -1;
-    });
-  };
-
-  const displayedTeams = searchLeagues(teams, term);
-
-  const currentTeams = useMemo(() => {
-    const firstPageIndex = (currentPage - 1) * pageSize;
-    const lastPageIndex = firstPageIndex + pageSize;
-    return displayedTeams.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage, displayedTeams]);
-
-  const handleChangePage = (page: number): void => setCurrentPage(page);
+  const { onChangeSearch, displayedItems } = useSearch(teams);
+  const { pageSize, currentItems, handleChangePage, currentPage } =
+    useSplitIntoPages(displayedItems, 10);
 
   if (loading) {
     return <Spinner />;
@@ -53,14 +30,13 @@ const Teams = () => {
     return <ErrorIndicator />;
   }
 
-  console.log(teams);
   return (
     <>
       <SearchPanel onChangeSearch={onChangeSearch} />
-      <TeamsGrid teams={currentTeams} />
+      <TeamsGrid teams={currentItems} />
       <Pagination
         className="content__pagination-bar"
-        totalCount={displayedTeams.length}
+        totalCount={displayedItems.length}
         currentPage={currentPage}
         pageSize={pageSize}
         onPageChange={handleChangePage}

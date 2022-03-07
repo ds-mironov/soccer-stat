@@ -1,4 +1,5 @@
 import React from 'react';
+import { Navigate } from "react-router-dom";
 import Leagues from '../pages/leagues/Leagues';
 import LeagueCalendar from '../pages/leagueCalendar/LeagueCalendar';
 import Teams from '../pages/teams/Teams';
@@ -9,5 +10,5 @@ export const ROUTES = [
   { path: '/leagues/:id', element: <LeagueCalendar /> },
   { path: '/teams', element: <Teams /> },
   { path: '/teams/:id', element: <TeamsCalendar /> },
-  { path: '*', element: <Leagues /> },
+  { path: '*', element: <Navigate to="/leagues" replace /> },
 ];

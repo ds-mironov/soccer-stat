@@ -5,11 +5,13 @@
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, auto);
     background-color: #FFFFFF;
-    border: 1px solid #000000;
 }
 
 .container__content {
-    min-height: 40vh;
+    min-height: calc(100vh - 60px - 36px);
     display: flex;
     flex-direction: column;
+    border: 1px solid #858585;
+    border-top: none;
+    border-bottom: none;
 }

@@ -1,0 +1,8 @@
+.content__leagues-grid {
+    min-height: 728px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(260px, auto));
+    grid-template-rows: auto;
+    gap: 32px;
+    padding: 32px;
+}

@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
+.container__header {
+    display: flex;
+    align-items: center;
+    min-height: 60px;
+    border: 1px solid #858585;
+    padding: 0 20px;
+}
+
+.header__logo {
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: 'Courgette', cursive;
+    color: #151515;
+}

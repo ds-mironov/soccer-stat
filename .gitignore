@@ -3,7 +3,7 @@
 # dependencies
 .idea
 /node_modules
-config.json
+src/config.json
 /.pnp
 .pnp.js
 .prettierrc

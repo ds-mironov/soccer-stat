@@ -1,0 +1,23 @@
+.indicator-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.indicator-container__image {
+    width: 50%;
+    margin: 50px auto;
+}
+
+.indicator-container__warning-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.warning-block__error {
+    margin-top: 15px;
+    font-size: 2rem;
+    text-align: center;
+    color: red;
+}

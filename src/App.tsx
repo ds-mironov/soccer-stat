@@ -1,11 +1,14 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ROUTES } from './constants/routes';
+import Header from './components/header/Header';
+import Footer from './components/footer/Footer';
 import './App.css';
 
 function App() {
   return (
     <div className="container">
+      <Header />
       <main className="container__content">
         <Routes>
           {ROUTES.map(({ path, element }) => (
@@ -13,6 +16,7 @@ function App() {
           ))}
         </Routes>
       </main>
+      <Footer />
     </div>
   );
 }

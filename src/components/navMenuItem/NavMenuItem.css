@@ -1,0 +1,26 @@
+.menu__menu-item {
+    height: inherit;
+}
+
+.menu-item__link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-family: Poppins, sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 22px;
+    color: #151515;
+    cursor: pointer;
+    height: 100%;
+    padding: 0 20px;
+}
+
+.menu-item__link:hover {
+    background-color: #59e7e7;
+}
+
+.menu-item__link_active {
+    border-bottom: 2px solid #e7881e;
+}
+

@@ -1,0 +1,22 @@
+.teams-grid__team {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 240px;
+    border: 1px solid #000000;
+    border-radius: 12px;
+    padding: 16px;
+    cursor: pointer;
+}
+
+.team__name {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.team__crest {
+    width: 70%;
+    height: auto;
+}

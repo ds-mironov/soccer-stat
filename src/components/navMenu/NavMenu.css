@@ -1,0 +1,10 @@
+.header__nav-block {
+    padding: 0 40px;
+    height: 100%;
+}
+
+.nav-block__menu {
+    display: flex;
+    align-items: center;
+    height: inherit;
+}

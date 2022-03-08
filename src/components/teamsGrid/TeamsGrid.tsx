@@ -1,6 +1,6 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
-import { ITeams } from '../../types/teams';
+import { ITeams } from '../../types/team';
 import TeamsGridItem from '../teamsGridItem/TeamsGridItem';
 import './TeamsGrid.css';
 

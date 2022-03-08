@@ -26,9 +26,16 @@ const useFootballService = () => {
     return await request(`${apiBase}teams/`, 'GET', headers);
   }, [request, headers]);
 
-  const getTeamMatches = useCallback(
+  const getOneTeam = useCallback(
     async (id: string) => {
       return await request(`${apiBase}teams/${id}`, 'GET', headers);
+    },
+    [request, headers],
+  );
+
+  const getTeamMatches = useCallback(
+    async (id: string) => {
+      return await request(`${apiBase}teams/${id}/matches`, 'GET', headers);
     },
     [request, headers],
   );
@@ -40,6 +47,7 @@ const useFootballService = () => {
     getLeagues,
     getLeagueMatches,
     getTeams,
+    getOneTeam,
     getTeamMatches,
   };
 };

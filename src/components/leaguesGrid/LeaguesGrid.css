@@ -1,5 +1,5 @@
 .content__leagues-grid {
-    min-height: 728px;
+    flex: 1 1 718px;
     display: grid;
     grid-template-columns: repeat(3, minmax(260px, auto));
     grid-template-rows: auto;

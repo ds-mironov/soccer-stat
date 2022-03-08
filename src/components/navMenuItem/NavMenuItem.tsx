@@ -12,7 +12,7 @@ const NavMenuItem = ({ title, link }: NavMenuItemProps) => {
   const [active, setActive] = useState(false);
 
   useEffect(() => {
-    if (pathname === link) {
+    if (pathname.includes(link)) {
       setActive(true);
     } else {
       setActive(false);

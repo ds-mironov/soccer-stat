@@ -7,8 +7,8 @@ import TeamsCalendar from '../pages/teamsCalendar/TeamsCalendar';
 
 export const ROUTES = [
   { path: '/leagues', element: <Leagues /> },
-  { path: '/leagues/:id', element: <LeagueCalendar /> },
+  { path: '/leagues/:leagueId', element: <LeagueCalendar /> },
   { path: '/teams', element: <Teams /> },
-  { path: '/teams/:id', element: <TeamsCalendar /> },
+  { path: '/teams/:teamId', element: <TeamsCalendar /> },
   { path: '*', element: <Navigate to="/leagues" replace /> },
 ];

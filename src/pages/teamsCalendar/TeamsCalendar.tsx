@@ -1,10 +1,45 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import useFootballService from '../../services/useFootballService';
+import Spinner from '../../components/shared/spinner/Spinner';
+import ErrorIndicator from '../../components/shared/errorIndicator/ErrorIndicator';
+import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
+import { navMenu } from '../../constants/navMenu';
 
 const TeamsCalendar = () => {
+  const { teamId } = useParams();
+  const [teamName, setTeamName] = useState('');
+  const [matches, setMatches] = useState([]);
+  const { loading, error, getOneTeam, getTeamMatches } = useFootballService();
+
+  useEffect(() => {
+    if (teamId != null) {
+      getOneTeam(teamId).then(({name}) => {
+        setTeamName(name);
+      });
+    }
+  }, [getOneTeam, teamId]);
+
+  useEffect(() => {
+    if (teamId != null) {
+      getTeamMatches(teamId).then(({ matches }) => {
+        setMatches(matches);
+      });
+    }
+  }, [getTeamMatches, teamId]);
+
+  if (loading) {
+    return <Spinner />;
+  }
+
+  if (error) {
+    return <ErrorIndicator />;
+  }
+
   return (
-    <div>
-      Teams Calendar
-    </div>
+    <>
+      <Breadcrumbs parentItemsName={navMenu[1].title} currentItemName={teamName} />
+    </>
   );
 };
 

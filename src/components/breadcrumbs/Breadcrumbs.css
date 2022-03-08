@@ -1,0 +1,17 @@
+.content__breadcrumbs {
+    margin: 8px 0 16px 32px;
+}
+
+.breadcrumbs__button {
+    outline: none;
+    border: none;
+    background: inherit;
+    padding: 0 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.breadcrumbs__item-name {
+    padding: 0 8px;
+    font-weight: 600;
+}

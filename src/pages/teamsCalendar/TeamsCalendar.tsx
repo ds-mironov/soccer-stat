@@ -5,6 +5,9 @@ import Spinner from '../../components/shared/spinner/Spinner';
 import ErrorIndicator from '../../components/shared/errorIndicator/ErrorIndicator';
 import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 import { navMenu } from '../../constants/navMenu';
+import { useSplitIntoPages } from '../../hooks/useSplitIntoPages';
+import CalendarGrid from '../../components/calendarGrid/CalendarGrid';
+import Pagination from '../../components/pagination/Pagination';
 
 const TeamsCalendar = () => {
   const { teamId } = useParams();
@@ -28,6 +31,9 @@ const TeamsCalendar = () => {
     }
   }, [getTeamMatches, teamId]);
 
+  const { pageSize, currentItems, handleChangePage, currentPage } =
+    useSplitIntoPages(matches);
+
   if (loading) {
     return <Spinner />;
   }
@@ -39,6 +45,15 @@ const TeamsCalendar = () => {
   return (
     <>
       <Breadcrumbs parentItemsName={navMenu[1].title} currentItemName={teamName} />
+      <h1 className="content__header">Матчи</h1>
+      <CalendarGrid matches={currentItems} />
+      <Pagination
+        className="content__pagination-bar"
+        totalCount={matches.length}
+        currentPage={currentPage}
+        pageSize={pageSize}
+        onPageChange={handleChangePage}
+      />
     </>
   );
 };

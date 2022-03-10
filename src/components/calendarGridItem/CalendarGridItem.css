@@ -1,0 +1,5 @@
+.calendar__cell {
+    display: flex;
+    border-bottom: 1px solid #000000;
+    padding: 10px 25px;
+}

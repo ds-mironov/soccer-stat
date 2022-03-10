@@ -1,0 +1,8 @@
+.content__calendar {
+    display: grid;
+    grid-template-columns: .6fr .3fr 1fr 1fr;
+    grid-template-rows: auto;
+    border: 1px solid #000000;
+    border-bottom: none;
+    margin: 16px 32px;
+}

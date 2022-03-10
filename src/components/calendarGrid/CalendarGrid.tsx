@@ -1,9 +1,19 @@
 import React from 'react';
+import { IMatch } from '../../types/match';
+import CalendarGridItem from '../calendarGridItem/CalendarGridItem';
+import './CalendarGrid.css';
 
-const CalendarGrid = () => {
+type CalendarGridProps = {
+  matches: IMatch[];
+};
+
+const CalendarGrid = ({ matches }: CalendarGridProps) => {
+  console.log(matches);
   return (
-    <div>
-      
+    <div className="content__calendar">
+      {matches.map((match) => {
+        return <CalendarGridItem key={match.id} match={match} />;
+      })}
     </div>
   );
 };

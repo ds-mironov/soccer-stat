@@ -1,5 +1,13 @@
 .calendar__cell {
-    display: flex;
     border-bottom: 1px solid #000000;
     padding: 10px 25px;
+}
+
+.calendar__cell.calendar__cell_align-space-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cell__additional {
+    color: #9f9b9b;
 }

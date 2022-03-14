@@ -8,6 +8,8 @@ import { navMenu } from '../../constants/navMenu';
 import { useSplitIntoPages } from '../../hooks/useSplitIntoPages';
 import CalendarGrid from '../../components/calendarGrid/CalendarGrid';
 import Pagination from '../../components/pagination/Pagination';
+import RangeDate from '../../components/rangeDate/RangeDate';
+import useFilterByDateRange from '../../hooks/useFilterByDateRange';
 
 const TeamsCalendar = () => {
   const { teamId } = useParams();
@@ -31,8 +33,9 @@ const TeamsCalendar = () => {
     }
   }, [getTeamMatches, teamId]);
 
+  const { handleChangeDate, displayedItems } = useFilterByDateRange(matches);
   const { pageSize, currentItems, handleChangePage, currentPage } =
-    useSplitIntoPages(matches);
+    useSplitIntoPages(displayedItems);
 
   if (loading) {
     return <Spinner />;
@@ -46,10 +49,11 @@ const TeamsCalendar = () => {
     <>
       <Breadcrumbs parentItemsName={navMenu[1].title} currentItemName={teamName} />
       <h1 className="content__header">Матчи</h1>
+      <RangeDate handleChangeDate={handleChangeDate} />
       <CalendarGrid matches={currentItems} />
       <Pagination
         className="content__pagination-bar"
-        totalCount={matches.length}
+        totalCount={displayedItems.length}
         currentPage={currentPage}
         pageSize={pageSize}
         onPageChange={handleChangePage}

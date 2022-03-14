@@ -21,15 +21,24 @@ const CalendarGridItem = ({ match }: CalendarGridItemProps) => {
 
   return (
     <>
-      <div className="calendar__cell">{utcDate}</div>
-      <div className="calendar__cell">{status}</div>
       <div className="calendar__cell">
+        {new Date(utcDate).toLocaleDateString('ru-RU')}{' '}
+        {new Date(utcDate).toLocaleTimeString('ru-RU', {
+          hour: '2-digit',
+          minute: '2-digit'
+        })}
+      </div>
+      <div className="calendar__cell">{status}</div>
+      <div className="calendar__cell calendar__cell_align-space-between">
         <span>{homeTeamName}</span>
         <span>-</span>
         <span>{awayTeamName}</span>
       </div>
       <div className="calendar__cell">
-        {x}:{y} ({z || '-'}:{g || '-'}) ({n || '-'}:{m || '-'})
+        {x || '-'}:{y || '-'}{' '}
+        <span className="cell__additional">
+          ({z || '-'}:{g || '-'}) ({n || '-'}:{m || '-'})
+        </span>
       </div>
     </>
   );

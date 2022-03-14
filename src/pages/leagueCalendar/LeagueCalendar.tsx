@@ -7,8 +7,9 @@ import { navMenu } from '../../constants/navMenu';
 import CalendarGrid from '../../components/calendarGrid/CalendarGrid';
 import { useSplitIntoPages } from '../../hooks/useSplitIntoPages';
 import Pagination from '../../components/pagination/Pagination';
+import useFilterByDateRange from '../../hooks/useFilterByDateRange';
 import './LeagueCalendar.css';
-// import { useSearch } from '../../hooks/useSearch';
+import RangeDate from '../../components/rangeDate/RangeDate';
 
 const leagueId = '2000';
 
@@ -26,9 +27,9 @@ const LeagueCalendar = () => {
     }
   }, [getLeagueMatches]);
 
-  // const {onChangeSearch, displayedItems} = useSearch(matches);
+  const { handleChangeDate, displayedItems } = useFilterByDateRange(matches);
   const { pageSize, currentItems, handleChangePage, currentPage } =
-    useSplitIntoPages(matches);
+    useSplitIntoPages(displayedItems);
 
   if (loading) {
     return <Spinner />;
@@ -45,10 +46,11 @@ const LeagueCalendar = () => {
         currentItemName={leagueName}
       />
       <h1 className="content__header">Матчи</h1>
+      <RangeDate handleChangeDate={handleChangeDate} />
       <CalendarGrid matches={currentItems} />
       <Pagination
         className="content__pagination-bar"
-        totalCount={matches.length}
+        totalCount={displayedItems.length}
         currentPage={currentPage}
         pageSize={pageSize}
         onPageChange={handleChangePage}

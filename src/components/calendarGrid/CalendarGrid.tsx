@@ -8,7 +8,6 @@ type CalendarGridProps = {
 };
 
 const CalendarGrid = ({ matches }: CalendarGridProps) => {
-  console.log(matches);
   return (
     <div className="content__calendar">
       {matches.map((match) => {
